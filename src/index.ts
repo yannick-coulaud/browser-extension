@@ -1,6 +1,7 @@
 import Netflix from './dom/providers/Netflix'
 import Disney from './dom/providers/Disney'
 import PrimeVideo from './dom/providers/PrimeVideo'
+import Jellyfin from './dom/providers/Jellyfin'
 import { ProviderUrlDomain } from './enum/ProviderUrlDomain'
 import { LogSeverityId } from './enum/LogSeverity'
 import Logger from './logging/Logger'
@@ -8,6 +9,7 @@ import Logger from './logging/Logger'
 const netflix = new Netflix()
 const disney = new Disney()
 const primeVideo = new PrimeVideo()
+const jellyfin = new Jellyfin()
 const domain = window.location.hostname
 
 setInterval(async () => {
@@ -19,8 +21,13 @@ setInterval(async () => {
       case ProviderUrlDomain.AMAZON:
         primeVideo.refreshRatings()
         break
-      default:
+      /*case ProviderUrlDomain.NETFLIX:
         netflix.refreshRatings()
+        break*/
+      default:
+        
+        netflix.refreshRatings()
+        //jellyfin.refreshRatings()
         break
     }
   }
